@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./Database/dbConnection.js";
+import authRouter from "./Routers/userRouter.js";
 
  dotenv.config();
 
@@ -23,6 +24,7 @@ connectDB ();
 
 
  //custom route
+ app.use("/api/auth",authRouter)
 
 
  //port
