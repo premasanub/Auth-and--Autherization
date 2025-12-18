@@ -21,9 +21,9 @@ const token =authHeader.split(" ")[1];
   }
  try {
      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    //console.log("decoded", decoded);
+    console.log("decoded", decoded);
     req.user = await User.findById(decoded._id).select("-password");
-    //console.log("req.user", req.user);
+    console.log("req.user", req.user);
     next();
   } catch (error) {
     res.status(500).json({ message: error.message });

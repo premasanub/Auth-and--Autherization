@@ -50,7 +50,7 @@ export const loginUser = async (req,res)=>{
       }
 
  //JWT PART
- const token = jwt.sign({__id:userDetail._id},process.env.JWT_SECRET);
+ const token = jwt.sign({_id:userDetail._id},process.env.JWT_SECRET);
  userDetail.token=token;
   await userDetail.save();
   res

@@ -26,15 +26,40 @@ const token =authHeader.split(" ")[1];
     console.log("decoded", decoded);
     req.user = decoded;
     console.log("req.user", req.user);
-    const user = await User.findById(req.user._id);
-    if (user.role !== "Admin") {
-      return res.status(404).json({ message: "Access denied only admin can view" });
-      
-    } 
-    req.user=user;
-    next();
+    const user = await User.findById(req.user._id).select("-password");
+    if (user.role === "Admin") {
+      next();
+    } else {
+      res.status(404).json({ message: "Access denied only admin can view" });
     }
-   catch (error) {
+  } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+// export const adminMiddleware = async (req, res, next) => {
+//   const authHeader = req.headers.authorization;
+//   if (!authHeader) {
+//     return res.status(401).json({ message: "Authorization header Missing" });
+//   }
+
+//   const token = authHeader.split(" ")[1];
+//   if (!token) {
+//     return res.status(404).json({ message: "Token Missing" });
+//   }
+
+//   try {
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//     req.user = decoded;
+//     const user = await User.findById(req.user._id);
+//     if (user.role !== "Admin") {
+//       res.status(404).json({ message: "User not found" });
+      
+//     } else {
+//       next();
+//     }
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
