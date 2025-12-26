@@ -12,7 +12,7 @@ export const registerUser = async (req, res) => {
     // Method 1
     const { username, email, password } = req.body;
     const hashPassword = await bcrypt.hash(password, 10);
-    //console.log(hashPassword);
+    console.log(hashPassword);
     const newUser = new User({ username, email, password: hashPassword });
     await newUser.save();
     res
@@ -29,7 +29,8 @@ export const registerUser = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ message: "User Not Registered Error in register user" });
+      // .json({ message: "User Not Registered Error in register user",error:error });
+      .json({ message: error.message });
   }
 };
 

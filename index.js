@@ -15,7 +15,7 @@ import authRouter from "./Routers/userRouter.js";
  app.use(cors());
 
  //db connection
-connectDB ();
+connectDB();
 
  //default route
  app.get("/",(req,res)=>{
@@ -28,10 +28,10 @@ connectDB ();
 
 
  //port
- const port = process.env.PORT || 5000;
+ const port = process.env.PORT || 3000;
 
 
  //server starting
  app.listen(port,()=>{
-    console.log("server started");
+    console.log( `server started ${port}`  );
  });
