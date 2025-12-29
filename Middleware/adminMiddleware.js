@@ -54,11 +54,13 @@ const token =authHeader.split(" ")[1];
 //     req.user = decoded;
 //     const user = await User.findById(req.user._id);
 //     if (user.role !== "Admin") {
+//       return
 //       res.status(404).json({ message: "User not found" });
       
-//     } else {
-//       next();
 //     }
+//        req.user=user;
+//       next();
+    
 //   } catch (error) {
 //     res.status(500).json({ message: error.message });
 //   }
