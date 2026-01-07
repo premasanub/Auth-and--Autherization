@@ -29,3 +29,12 @@ const token =authHeader.split(" ")[1];
     res.status(500).json({ message: error.message });
   }
 };
+
+
+// try {
+//      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//     console.log("decoded", decoded);
+//     req.user = await User.findById(decoded._id).select("-password");
+//     console.log("req.user", req.user);
+//     next();
+//   } 

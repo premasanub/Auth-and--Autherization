@@ -15,6 +15,7 @@ export const registerUser = async (req, res) => {
     console.log(hashPassword);
     const newUser = new User({ username, email, password: hashPassword });
     await newUser.save();
+    console.log("db name",mongoose.connection.name);
     res
       .status(200)
       .json({ message: "User Registered Successfully", data: newUser });
@@ -68,14 +69,18 @@ export const loginUser = async (req,res)=>{
 
 //get user
 
-export const getUser = async (req, res) => {
+export const getUserData = async (req, res) => {
   try {
-    const user = await User.find();
-    res.status(200).json({ message: "Admin User", data: user });
-  } catch (error) {
+    const user =await user.findOne(req.filter);
+    res.json(user);
+  }
+
+  catch (error) {
     res
       .status(500)
       .json({ message: "User Not Logged In Unable to fetch data" });
   }
-};
+  
+  
 
+}
