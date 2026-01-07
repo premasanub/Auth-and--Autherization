@@ -8,7 +8,7 @@ const authRouter = express.Router();
 
 authRouter.post("/register",registerUser)
 authRouter.post("/login",loginUser)
-authRouter.get("/getdata",authMiddleware,ownDataOnly,getUserData)
+authRouter.get("/get",authMiddleware,ownDataOnly,getUserData)
 
 
 
