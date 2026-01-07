@@ -1,4 +1,4 @@
- import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import User from "../Model/userSchema.js";
 import dotenv from "dotenv";
 
