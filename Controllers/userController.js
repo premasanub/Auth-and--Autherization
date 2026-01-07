@@ -69,19 +69,19 @@ export const loginUser = async (req,res)=>{
 
 //get user
 
-export const getUser = async (req, res) => {
-  try {
-    const user =await user.findOne(req.filter);
-    res.json(user);
-  }
+// export const getUser = async (req, res) => {
+//   try {
+//     const user =await user.findOne(req.filter);
+//     res.json(user);
+//   }
 
-  catch (error) {
-    res
-      .status(500)
-      .json({ message: "User Not Logged In Unable to fetch data" });
-  }
+//   catch (error) {
+//     res
+//       .status(500)
+//       .json({ message: "User Not Logged In Unable to fetch data" });
+//   }
   
-}
+// }
 
 // }
 
@@ -95,3 +95,21 @@ export const getUser = async (req, res) => {
 //       .json({ message: "User Not Logged In Unable to fetch data" });
 //   }
 // };
+
+
+ export const getUser = async (req, res) => {
+  try {
+    const userId=req.user._id;
+
+    const user = await User.findById(userId).select("-password");
+    if(!user){
+      return
+      res.status(404).json({message:"User not fount"});
+    }
+    res.status(200).json({ message: " User fetched successfully", data: user });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "User Not Logged In Unable to fetch data" });
+  }
+};
