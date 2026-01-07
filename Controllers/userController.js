@@ -81,7 +81,7 @@ export const getUser = async (req, res) => {
       .json({ message: "User Not Logged In Unable to fetch data" });
   }
   
-  
+}
 
 // }
 
