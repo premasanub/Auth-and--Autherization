@@ -58,8 +58,7 @@ MONGODB_URL: MongoDB connection string
 ## API Documentation
 All endpoints are documented and tested using Postman.
 
-https://documenter.getpostman.com/view/47538481/2sB3dVLmFa
-
+https://documenter.getpostman.com/view/47538481/2sBXVeFY2b
 
 ## Deployment
 
